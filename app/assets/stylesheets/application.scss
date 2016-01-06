@@ -1,0 +1,73 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require rails_bootstrap_forms
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+	color: #565a5c;
+	background-color: #F8F8F8;
+}
+
+.container {
+	width: 80%;
+}
+
+.navbar-default .navbar-brand {
+	color: #FF5A5F;
+	font-size: 2em;
+	font-weight: 400;
+}
+
+.btn-primary.btn {
+	border: 1px solid #ff5a5f;
+	border-radius: 2px;
+	font-weight: bold;
+	background-color: #ff5a5f;
+	color: #fff;
+	padding: 10px 25px 10px 25px;
+}
+
+.btn-primary.btn:hover, .btn-primary.btn:focus {
+	border-color: #ff7e82;
+	border-bottom-color: #fa0008;
+	background-color: #ff7e82;
+	outline:none;
+}
+
+
+.btn-file input [type=file]{
+	position: absolute;
+	top:0;
+	right: 0;
+	min-width: 100%;
+	min-height: 100%;
+	font-size: 100%;
+	text-align: right;
+	outline: none;
+	background: white;
+	cursor: inherit;
+	display: block; 
+}
+
+.panel-heding.preview {
+	padding: 0;
+} 
+
+.panel-heading.preview img{
+	width: 100%
+}

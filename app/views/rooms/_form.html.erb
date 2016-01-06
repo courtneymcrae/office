@@ -1,0 +1,49 @@
+<div class="panel panel-default">
+<div class="panel-heading">
+  Create a Listing 
+  </div>
+  <div class="panel=body">
+    <div class="container">
+
+    <%= form_for @room, html: {multipart: true} do |f| %>
+
+    <div class="row">
+    <div class="col-md-4 select">
+    <div class="form-group">
+    <label>Property Type</label>
+    <%= f.select :address, options_for_select([["Apartment", "Apartment"], ["House", "House"], ["Bed & Breakfast", "Bed and Breakfast"]]), :id => "address", :prompt => "Select...", :class => "form-control" %>
+
+    <div>
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+  </div>
+
+  <div>
+    <%= f.label :price %>
+    <%= f.text_field :price %>
+  </div>
+
+<div class="row">
+<div class="col-md-4">
+<div class="form-group">
+<span class="btn btn default btn-file">
+<i class = "fa fa-cloud-upload fa-lg"></i>Upload Photos 
+<%= file_field_tag "images[]", type: :file, multiple: true %>
+</span>
+</div>
+</div>
+</div>
+
+<div id="photos"><%=render 'photos/list' %></div>
+
+
+  <div class="actions">
+    <%= f.submit "Save", class: "btn btn-primary" %>
+  </div>
+
+<% end %>
+
+
+    </div>
+    </div>
+    </div>
