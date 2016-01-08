@@ -7,11 +7,20 @@ class ReservationsController < ApplicationController
 
 	def create
 		@room=Room.find(params[:room_id])
-		@reservation = current_user.reservations.create(reservation_params)
-
-		redirect_to @reservation.room, notice: "Your reservation has been created..."
+		@reservation = current_user.reservations.build(reservation_params)
+		if @reservation.save
+		 redirect_to @reservation.room, notice: "Your reservation has been created..."
+		else
+		 render :new, notice: "Something went wrong!"
+		end
 	end 
 
+	
+	def destroy 
+	  @reservation = Reservation.find(params[:id])
+      @reservation.destroy 
+      redirect_to user_path(current_user)
+    end
 
 	private
 	def reservation_params

@@ -13,50 +13,38 @@ def new
   @room = current_user.rooms.new
 end 
 
-def create 
+def create
 @room = current_user.rooms.build(room_params)
 
 if @room.save
 
-if params[:images]
-    params[:images].each do |image|
-      room.photos.create(image: image)
-    end 
-  end 
-
-  @photos = room.photos 
-  redirect_to edit_room_path(@room), notice: "Saved..."
-  else 
-    render :new
-    end 
-  end 
-
-  def edit 
-    @photos = @room.photos 
-  end 
-
-  def update 
-    if @room.update(room_params)
-
-      if params[:images]
-        params[:images].each do |image|
-          @room.photos.create(image: image)
-        end 
-      end 
-
-      redirect_to edit_room_path(@room), notice: "Updated..."
+      redirect_to rooms_path
     else 
-      render :edit 
+      render :new 
     end 
   end 
+
+def update 
+@room = Room.find(params[:id]) 
+      
+      if @room.update_attributes(room_params)
+        redirect_to rooms_path, notice: "Your listing has been created..."
+    else
+      render :edit
+    end
+
+    
+  end
+
+  def destroy 
+      @room.destroy 
+      redirect_to rooms_path
+    end
 
 private
-    # Use callbacks to share common setup or constraints between actions.
     def set_room
       @room = Room.find(params[:id])
     end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
     def room_params
       params.require(:room).permit(:address, :price, :summary, :user_id)
     end

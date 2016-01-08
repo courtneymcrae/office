@@ -1,14 +1,16 @@
-<table class="table">
- Hi <%=@user_name %> here are your reservations... 
+ <h2>Here are your reservations... </h2>
+ <table class="table">
     <% @user.reservations.each do |reservation| %>
       <tr>
         <td> Address <%= reservation.room.address %></td>
-        <td> Start Date <%= reservation.start_date %></td>
-        <td> End Date <%= reservation.end_date %></td>
-        <td> Price <%= reservation.price %></td>
-        <td><%= reservation.total %>
-        <td><%#= link_to 'Edit', edit_reservation_path(reservation) %></td>
-        <td><%#= link_to 'Destroy', todo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if reservation.start_date %>
+        <td> Start Date <%= reservation.start_date.strftime("%B %d, %Y")%></td>
+        <% end %>
+        <% if reservation.end_date %>
+        <td> End Date <%= reservation.end_date.strftime("%B %d, %Y")%></td>
+        <% end %>
+        <td> Price $<%= reservation.price %></td>
+        <td><%= link_to 'Destroy', room_reservation_path(reservation.room, reservation), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
 </table>

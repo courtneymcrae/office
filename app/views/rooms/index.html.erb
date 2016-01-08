@@ -1,32 +1,22 @@
-<% @rooms.each do |room| %>
+<table class="table">
 
-<div class="col-md-7">
-<h2> Address: <%=room.address %></h2>
-</div>
-<div class="col-md-7">
-<h4> Summary: <%=room.summary %></h4>
-</div>
-<div class="col-md-7">
-<h4> Price: <%=room.price %></h4>
-</div>
+	<% @rooms.each do |room| %>
 
-<div class="col-md-2">
-<%= image_tag room.photos.first.image.url(:med) if room.photos.length > 0 %>
-</div>
+		<h2> Address: <%=room.address %></h2>
+		<p> Summary: <%=room.summary %></p>
+		<p> Price: $ <%=room.price %>/SF</p>
+		<p><%= image_tag room.photos.first.image.url(:med) if room.photos.length > 0 %>
+		</p>
 
-<h4 class="sidebar-item"><%= link_to "Book Reservation", new_room_reservation_path(room), class: "sidebar-link" %></h4>
-<h4 class="sidebar-item"><%= link_to "Update Listing", edit_room_path(room), class: "sidebar-link" %></h4>
-<h4 class="sidebar-item"><%= link_to "Your Reservations", users_path(room), class: "sidebar-link" %></h4>
+		<br>
 
+		<p><%= link_to "Book Reservation", new_room_reservation_path(room) %></p>
+		<p><%= link_to "Update Listing", edit_room_path(room) %></p>
 
+		<hr>
 
-<% end %>
-
-</div>
-</div>
-</div>
-</div>
-
+	<% end %>
+</table>
 
 
 
