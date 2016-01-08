@@ -1,16 +1,16 @@
 Rails.application.routes.draw do
 
-  get 'pages/home'
+  # get 'pages/home'
 
-  get 'secret/public_info'
+  # get 'secret/public_info'
 
-  get 'secret/secret'
+  # get 'secret/secret'
 
-  get 'sessions/new'
+  # get 'sessions/new'
 
-  get 'sessions/create'
+  # get 'sessions/create'
 
-  get 'sessions/destroy'
+  # get 'sessions/destroy'
 
   root 'users#index'
 

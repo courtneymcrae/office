@@ -5,9 +5,11 @@ rooms = Room.create([
     ])
 
 users = User.create([
-	{name: "Courtney", email: "courtneymcrae@gmail.com"}
+	{name: "Courtney", email: "courtneymcrae@gmail.com", }
 	])
 
+
+#user.email = "courtney@airoffice.com"
 
 
 
