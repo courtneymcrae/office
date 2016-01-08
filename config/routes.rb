@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'pages/home'
+
   get 'secret/public_info'
 
   get 'secret/secret'
@@ -28,7 +30,7 @@ Rails.application.routes.draw do
 
   get 'users' => 'users#index'
 
-  get 'users/new' => 'users#new'
+  get 'users/new' => 'users#new', as: :new_user
 
   post 'users/' => 'users#create'
 
@@ -44,16 +46,16 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :index, :create]
 
-  get 'login', to: 'sessions#new'
+  get 'login', to: 'sessions#new', as: :new_session
 
-  delete "logout", to: "sessions#destroy"
+  get "logout", to: "sessions#destroy", as: :destroy_session
 
   resources :sessions, only: [ :create]
 
   resources :photos
 
   resources :rooms do 
-    resources :reservation, only: [:create]
+    resources :reservations
   end 
 end 
   # The priority is based upon order of creation: first created -> highest priority.

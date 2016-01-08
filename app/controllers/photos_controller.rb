@@ -5,7 +5,5 @@ class PhotosController <ApplicationController
 
 		@photo.destroy
 		@photo = Photo.where(room_id: room.id)
-
-		respond_to :js 
 	end 
 end 

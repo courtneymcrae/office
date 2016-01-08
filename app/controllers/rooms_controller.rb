@@ -6,7 +6,7 @@ def index
     end
 
 def show
-      @photos =@room.photos
+   @reservation = @room.reservations.new
     end
 
 def new 
@@ -40,7 +40,7 @@ if params[:images]
 
       if params[:images]
         params[:images].each do |image|
-          room.photos.create(image: image)
+          @room.photos.create(image: image)
         end 
       end 
 

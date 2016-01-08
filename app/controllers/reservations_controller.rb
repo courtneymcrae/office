@@ -1,15 +1,21 @@
 class ReservationsController < ApplicationController
-	before_action :authenticate_user!
+
+	def new
+		@room=Room.find(params[:room_id])
+		@reservation = current_user.reservations.new
+	end
 
 	def create
-		@reservation = current.user.reservation.create(reservation_params)
+		@room=Room.find(params[:room_id])
+		@reservation = current_user.reservations.create(reservation_params)
 
-		redirect to @reservation.room, notice: "Your reservation has been created..."
+		redirect_to @reservation.room, notice: "Your reservation has been created..."
 	end 
+
 
 	private
 	def reservation_params
-		params.require(:reservation).permit(:start_date, :end_date, :price, :total, :room_id )
+		params.require(:reservation).permit(:start_date, :end_date, :price, :total, :room_id, :user_id )
 		
 	end
 end 

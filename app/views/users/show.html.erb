@@ -1,2 +1,14 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<table class="table">
+ Hi <%=@user_name %> here are your reservations... 
+    <% @user.reservations.each do |reservation| %>
+      <tr>
+        <td> Address <%= reservation.room.address %></td>
+        <td> Start Date <%= reservation.start_date %></td>
+        <td> End Date <%= reservation.end_date %></td>
+        <td> Price <%= reservation.price %></td>
+        <td><%= reservation.total %>
+        <td><%#= link_to 'Edit', edit_reservation_path(reservation) %></td>
+        <td><%#= link_to 'Destroy', todo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+</table>
